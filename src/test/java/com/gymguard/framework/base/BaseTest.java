@@ -48,13 +48,7 @@ public abstract class BaseTest {
     @AfterMethod(alwaysRun = true)
     public void tearDown(ITestResult result) {
         try {
-            if (result != null && !result.isSuccess()) {
-                try {
-                    ScreenshotHelper.captureScreenshot(driver, result.getMethod().getMethodName());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
+            
         } finally {
             if (driver != null) {
                 try {
