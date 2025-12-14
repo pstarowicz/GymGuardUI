@@ -77,7 +77,7 @@ public abstract class BaseTest {
 
     private String loadBaseUrl() {
         Properties props = new Properties();
-        String[] candidatePaths = {"config/application.properties", "application.properties"};
+        String[] candidatePaths = {"config/application.properties"};
         for (String path : candidatePaths) {
             try (InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(path)) {
                 if (is != null) {
