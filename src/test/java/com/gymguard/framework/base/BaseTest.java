@@ -71,7 +71,7 @@ public abstract class BaseTest {
      *
      * @return current WebDriver instance (may be null if setUp has not run yet)
      */
-    protected WebDriver getDriver() {
+    public WebDriver getDriver() {
         return driver;
     }
 
