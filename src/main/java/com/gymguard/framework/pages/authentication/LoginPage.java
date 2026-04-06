@@ -1,7 +1,6 @@
 package com.gymguard.framework.pages.authentication;
 
 import com.gymguard.framework.base.BasePage;
-import com.gymguard.framework.pages.dashboard.DashboardPage;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -45,11 +44,12 @@ public class LoginPage extends BasePage {
 	 * @param password the password to use
 	 * @return DashboardPage instance
 	 */
-	public DashboardPage login(String email, String password) {
+	public LoginPage login(String email, String password) {
 		clearAndType(emailInput, email);
 		clearAndType(passwordInput, password);
 		clickElement(submitButton);
-		return new DashboardPage();
+		
+		return this;
 	}
 
 	/**

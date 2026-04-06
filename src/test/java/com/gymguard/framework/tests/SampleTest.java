@@ -2,11 +2,8 @@ package com.gymguard.framework.tests;
 
 import com.gymguard.framework.base.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import com.gymguard.framework.base.TestListener;
 
-@Listeners(TestListener.class)
 public class SampleTest extends BaseTest {
 
     @Test

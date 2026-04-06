@@ -1,11 +1,11 @@
 package com.gymguard.framework.base;
 
 import com.gymguard.framework.factories.DriverFactory;
-import com.gymguard.framework.utils.ScreenshotHelper;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,13 +17,13 @@ import java.util.Properties;
  * <p>Responsibilities:
  * - create a WebDriver instance before each test via {@link DriverFactory}
  * - navigate to the application's base URL loaded from classpath application.properties
- * - on failure, capture a screenshot via {@link ScreenshotHelper}
  * - quit the driver after each test
  *
  * Assumptions:
  * - a properties file is available on the classpath at {@code config/application.properties}
  *   or {@code application.properties} and contains the key {@code base.url}.
  */
+@Listeners(TestListener.class)
 public abstract class BaseTest {
 
     private WebDriver driver;
@@ -41,7 +41,7 @@ public abstract class BaseTest {
     }
 
     /**
-     * Quit the WebDriver after each test method. If the test failed, capture a screenshot.
+     * Quit the WebDriver after each test method.
      *
      * @param result TestNG test result used to detect failures.
      */
