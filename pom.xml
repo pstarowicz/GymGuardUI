@@ -20,7 +20,6 @@
         <!-- dependency versions -->
         <selenium.version>4.39.0</selenium.version>
         <testng.version>7.11.0</testng.version>
-        <webdrivermanager.version>6.3.3</webdrivermanager.version>
         <jackson.version>2.20.1</jackson.version>
         <slf4j.version>2.0.17</slf4j.version>
         <logback.version>1.5.22</logback.version>
@@ -44,12 +43,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- WebDriverManager for driver binaries -->
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>${webdrivermanager.version}</version>
-        </dependency>
+        <!-- Note: WebDriverManager removed; provide driver binary via system property, env var, or PATH -->
 
         <!-- Jackson for JSON handling (test data) -->
         <dependency>
