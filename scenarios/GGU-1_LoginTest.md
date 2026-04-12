@@ -31,7 +31,7 @@ Verify that a registered user can successfully log in using valid credentials. T
 3. Submit the login form.
 	 - Action: Click the login/submit button.
 	 - Assertions:
-		 - The user is redirected to the dashboard or another authenticated page (URL contains `/dashboard` or equivalent).
+		 - The user is redirected to the dashboard or another authenticated page (URL contains `/workouts` or equivalent).
 		 - A user-specific element is visible - user name in the upper-right corner of navigation bar.
 
 4. Verify session persistence.
