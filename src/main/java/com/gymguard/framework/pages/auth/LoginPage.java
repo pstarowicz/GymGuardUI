@@ -31,19 +31,19 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage login(String email, String password) {
-        clearAndType(emailInput, email);
-        clearAndType(passwordInput, password);
-        clickElement(submitButton);
+        actions.clearAndType(emailInput, email);
+        actions.clearAndType(passwordInput, password);
+        actions.click(submitButton);
         return this;
     }
 
     public String getErrorMessage() {
-        return getElementText(errorMessage);
+        return actions.getText(errorMessage);
     }
 
     public boolean isLoginFormDisplayed() {
         try {
-            waitForElementVisible(loginForm, 5);
+            waitHelper.waitForElementVisible(loginForm, 5);
             return loginForm.isDisplayed();
         } catch (Exception e) {
             return false;
@@ -52,7 +52,7 @@ public class LoginPage extends BasePage {
 
     public boolean isEmailInputVisible() {
         try {
-            waitForElementVisible(emailInput, 5);
+            waitHelper.waitForElementVisible(emailInput, 5);
             return emailInput.isDisplayed() && emailInput.isEnabled();
         } catch (Exception e) {
             return false;
@@ -61,7 +61,7 @@ public class LoginPage extends BasePage {
 
     public boolean isPasswordInputVisible() {
         try {
-            waitForElementVisible(passwordInput, 5);
+            waitHelper.waitForElementVisible(passwordInput, 5);
             return passwordInput.isDisplayed() && passwordInput.isEnabled();
         } catch (Exception e) {
             return false;
@@ -70,7 +70,7 @@ public class LoginPage extends BasePage {
 
     public boolean isSubmitButtonVisible() {
         try {
-            waitForElementVisible(submitButton, 5);
+            waitHelper.waitForElementVisible(submitButton, 5);
             return submitButton.isDisplayed();
         } catch (Exception e) {
             return false;
@@ -78,17 +78,16 @@ public class LoginPage extends BasePage {
     }
 
     public void enterEmail(String email) {
-        clearAndType(emailInput, email);
+        actions.clearAndType(emailInput, email);
     }
 
     public void enterPassword(String password) {
-        clearAndType(passwordInput, password);
+        actions.clearAndType(passwordInput, password);
     }
 
     public String getEmailInputValue() {
         try {
-            waitForElementVisible(emailInput, 5);
-            return emailInput.getAttribute("value");
+            return actions.getAttribute(emailInput, "value");
         } catch (Exception e) {
             return "";
         }
@@ -96,14 +95,13 @@ public class LoginPage extends BasePage {
 
     public String getPasswordInputType() {
         try {
-            waitForElementVisible(passwordInput, 5);
-            return passwordInput.getAttribute("type");
+            return actions.getAttribute(passwordInput, "type");
         } catch (Exception e) {
             return "";
         }
     }
 
     public void submit() {
-        clickElement(submitButton);
+        actions.click(submitButton);
     }
 }

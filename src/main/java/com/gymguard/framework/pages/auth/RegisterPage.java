@@ -25,9 +25,9 @@ public class RegisterPage extends BasePage {
     }
 
     public RegisterPage register(String email, String password) {
-        clearAndType(emailInput, email);
-        clearAndType(passwordInput, password);
-        clickElement(submitButton);
+        actions.clearAndType(emailInput, email);
+        actions.clearAndType(passwordInput, password);
+        actions.click(submitButton);
         return this;
     }
 }

@@ -22,13 +22,13 @@ public class NavigationBarPage extends BasePage {
      */
     public String getProfileName() {
         try {
-            return getElementText(navProfile).trim();
+            return actions.getText(navProfile).trim();
         } catch (Exception e) {
             return "";
         }
     }
 
     public void clickProfile() {
-        clickElement(navProfile);
+        actions.click(navProfile);
     }
 }
