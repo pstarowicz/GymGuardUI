@@ -11,15 +11,11 @@ import java.time.Duration;
  * Small helper encapsulating waiting logic so pages and actions
  * don't need to create WebDriverWait everywhere.
  */
-public class WaitHelper {
+public final class WaitHelper {
 
-	private final WebDriver driver;
+	private WaitHelper() {}
 
-	public WaitHelper(WebDriver driver) {
-		this.driver = driver;
-	}
-
-	public void waitForElementVisible(WebElement element, int seconds, String elementName) {
+	public static void waitForElementVisible(WebDriver driver, WebElement element, int seconds, String elementName) {
 		try {
 			new WebDriverWait(driver, Duration.ofSeconds(seconds))
 					.until(ExpectedConditions.visibilityOf(element));

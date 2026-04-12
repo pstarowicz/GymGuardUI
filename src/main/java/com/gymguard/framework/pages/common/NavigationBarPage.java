@@ -1,6 +1,7 @@
 package com.gymguard.framework.pages.common;
 
 import com.gymguard.framework.base.BasePage;
+import com.gymguard.framework.utils.ElementActions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,10 +22,10 @@ public class NavigationBarPage extends BasePage {
      * Returns the profile/name text from the navigation bar.
      */
     public String getProfileName() {
-        return actions.getText(navProfile, "nav profile").trim();
+        return ElementActions.getText(driver, navProfile, "nav profile").trim();
     }
 
     public void clickProfile() {
-        actions.click(navProfile, "nav profile");
+        ElementActions.click(driver, navProfile, "nav profile");
     }
 }

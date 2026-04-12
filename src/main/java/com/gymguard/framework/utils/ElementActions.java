@@ -8,21 +8,14 @@ import org.openqa.selenium.WebElement;
  * consistent behavior for clicking, typing and reading values.
  *
  * All operations accept `elementName` to produce clearer assertion messages
- * and handle their own try/catch so page objects don't need to duplicate
- * error handling.
+ * and throw `AssertionError` on failures.
  */
-public class ElementActions {
+public final class ElementActions {
 
-    private final WebDriver driver;
-    private final WaitHelper waitHelper;
+    private ElementActions() {}
 
-    public ElementActions(WebDriver driver) {
-        this.driver = driver;
-        this.waitHelper = new WaitHelper(driver);
-    }
-
-    public void click(WebElement element, String elementName) {
-        waitHelper.waitForElementVisible(element, 10, elementName);
+    public static void click(WebDriver driver, WebElement element, String elementName) {
+        WaitHelper.waitForElementVisible(driver, element, 10, elementName);
 
         try {
             element.click();
@@ -31,8 +24,8 @@ public class ElementActions {
         }
     }
 
-    public void clearAndType(WebElement element, String text, String elementName) {
-        waitHelper.waitForElementVisible(element, 10, elementName);
+    public static void clearAndType(WebDriver driver, WebElement element, String text, String elementName) {
+        WaitHelper.waitForElementVisible(driver, element, 10, elementName);
 
         try {
             element.clear();
@@ -47,8 +40,8 @@ public class ElementActions {
         }
     }
 
-    public String getText(WebElement element, String elementName) {
-        waitHelper.waitForElementVisible(element, 10, elementName);
+    public static String getText(WebDriver driver, WebElement element, String elementName) {
+        WaitHelper.waitForElementVisible(driver, element, 10, elementName);
 
         try {
             return element.getText();
@@ -57,8 +50,8 @@ public class ElementActions {
         }
     }
 
-    public String getAttribute(WebElement element, String attribute, String elementName) {
-        waitHelper.waitForElementVisible(element, 10, elementName);
+    public static String getAttribute(WebDriver driver, WebElement element, String attribute, String elementName) {
+        WaitHelper.waitForElementVisible(driver, element, 10, elementName);
 
         try {
             return element.getAttribute(attribute);
@@ -67,8 +60,8 @@ public class ElementActions {
         }
     }
 
-    public boolean isDisplayed(WebElement element, String elementName) {
-        waitHelper.waitForElementVisible(element, 5, elementName);
+    public static boolean isDisplayed(WebDriver driver, WebElement element, String elementName) {
+        WaitHelper.waitForElementVisible(driver, element, 5, elementName);
 
         try {
             return element.isDisplayed();
@@ -77,8 +70,8 @@ public class ElementActions {
         }
     }
 
-    public boolean isVisible(WebElement element, String elementName) {
-        waitHelper.waitForElementVisible(element, 5, elementName);
+    public static boolean isVisible(WebDriver driver, WebElement element, String elementName) {
+        WaitHelper.waitForElementVisible(driver, element, 5, elementName);
 
         try {
             return element.isDisplayed() && element.isEnabled();
