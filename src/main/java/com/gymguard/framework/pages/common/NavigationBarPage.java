@@ -21,14 +21,10 @@ public class NavigationBarPage extends BasePage {
      * Returns the profile/name text from the navigation bar.
      */
     public String getProfileName() {
-        try {
-            return actions.getText(navProfile).trim();
-        } catch (Exception e) {
-            return "";
-        }
+        return actions.getText(navProfile, "nav profile").trim();
     }
 
     public void clickProfile() {
-        actions.click(navProfile);
+        actions.click(navProfile, "nav profile");
     }
 }

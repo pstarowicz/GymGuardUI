@@ -31,77 +31,49 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage login(String email, String password) {
-        actions.clearAndType(emailInput, email);
-        actions.clearAndType(passwordInput, password);
-        actions.click(submitButton);
+        actions.clearAndType(emailInput, email, "email input");
+        actions.clearAndType(passwordInput, password, "password input");
+        actions.click(submitButton, "submit button");
         return this;
     }
 
     public String getErrorMessage() {
-        return actions.getText(errorMessage);
+        return actions.getText(errorMessage, "error message");
     }
 
     public boolean isLoginFormDisplayed() {
-        try {
-            waitHelper.waitForElementVisible(loginForm, 5);
-            return loginForm.isDisplayed();
-        } catch (Exception e) {
-            return false;
-        }
+        return actions.isDisplayed(loginForm, "login form");
     }
 
     public boolean isEmailInputVisible() {
-        try {
-            waitHelper.waitForElementVisible(emailInput, 5);
-            return emailInput.isDisplayed() && emailInput.isEnabled();
-        } catch (Exception e) {
-            return false;
-        }
+        return actions.isVisible(emailInput, "email input");
     }
 
     public boolean isPasswordInputVisible() {
-        try {
-            waitHelper.waitForElementVisible(passwordInput, 5);
-            return passwordInput.isDisplayed() && passwordInput.isEnabled();
-        } catch (Exception e) {
-            return false;
-        }
+        return actions.isVisible(passwordInput, "password input");
     }
 
     public boolean isSubmitButtonVisible() {
-        try {
-            waitHelper.waitForElementVisible(submitButton, 5);
-            return submitButton.isDisplayed();
-        } catch (Exception e) {
-            return false;
-        }
+        return actions.isDisplayed(submitButton, "submit button");
     }
 
     public void enterEmail(String email) {
-        actions.clearAndType(emailInput, email);
+        actions.clearAndType(emailInput, email, "email input");
     }
 
     public void enterPassword(String password) {
-        actions.clearAndType(passwordInput, password);
+        actions.clearAndType(passwordInput, password, "password input");
     }
 
     public String getEmailInputValue() {
-        try {
-            return actions.getAttribute(emailInput, "value");
-        } catch (Exception e) {
-            return "";
-        }
+        return actions.getAttribute(emailInput, "value", "email input");
     }
 
     public String getPasswordInputType() {
-        try {
-            return actions.getAttribute(passwordInput, "type");
-        } catch (Exception e) {
-            return "";
-        }
+        return actions.getAttribute(passwordInput, "type", "password input");
     }
 
     public void submit() {
-        actions.click(submitButton);
+        actions.click(submitButton, "submit button");
     }
 }
